@@ -3110,7 +3110,7 @@ function RunAllSites() {
     if (!$sel.is('img') && !$sel.attr('src'))
       throw Error('artoo.saveImage: selector is not an image.');
 
-    var ext = helpers.getExtension($sel.attr('src')),
+    var ext = '.jpg',
         alt = $sel.attr('alt');
 
     artoo.saveResource(
