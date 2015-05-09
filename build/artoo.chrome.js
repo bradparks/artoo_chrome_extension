@@ -1,4 +1,26 @@
+/* My Helpers */
 
+String.prototype.between=function(start, end){
+     return this.substring(this.lastIndexOf(start)+start.length,this.lastIndexOf(end)).replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+}
+
+String.prototype.toend=function( end){
+     return this.substring(0,this.lastIndexOf(end)).replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+}
+
+String.prototype.frombegining=function(end){
+     return this.substring(this.lastIndexOf(end)+end.length).replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+}
+
+function UseTheForceLuke(selector, attrib, field_to_store, output) {
+ 	var scrape = artoo.scrapeOne(selector, {
+	  field: attrib
+	});
+
+	if (scrape) {
+	  output[field_to_store] = scrape.field;
+	}
+}
 
 function RunAllSites() {
 	
