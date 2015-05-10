@@ -22,8 +22,31 @@ function UseTheForceLuke(selector, attrib, field_to_store, output) {
 	}
 }
 
+function PublixWhereShoppingIsAPleasure() {
+	// Publix coupon add all to my database
+
+	if (window.location.hostname == 'publix.couponselectionpage.com')  {
+		// Unbind google analytic tracking and just clip the offer into my local database
+		
+		if (artoo.$('.splash-clip-box.clip input.chbox').length > 0) {		
+			artoo.$('.splash-clip-box.clip input.chbox').unbind('click').click(function() {
+			   clipOfferOffersPage(this.id);
+			});
+
+			// click all offers
+			artoo.$('.splash-clip-box.clip input.chbox').click(); 
+
+			// Refresh and continue
+			setTimeout(function(){
+			   document.location=document.location}
+			,3000);
+		}
+	}
+
+}
+
 function RunAllSites() {
-	
+	PublixWhereShoppingIsAPleasure();
 }
 
 ;(function(undefined) {
