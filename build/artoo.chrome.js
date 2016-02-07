@@ -42,6 +42,43 @@ function PublixWhereShoppingIsAPleasure() {
 			,3000);
 		}
 	}
+}
+
+function AHfm() {
+    var out = ''
+    var artists = []
+    var shows = []
+    var urls = []
+    var start = 1170028800
+
+    for(var i = 0; i < 470; i++) {
+       urls.push('http://ah.fm/forum/calendar.php?c=1&week=' + start)
+       start += 604800
+    }
+
+    artoo.ajaxSpider(urls, function(data) {
+       $.each(data, function(k, page) {
+           $(page).find('.blockrow.eventlist a').each(function(k,v) {
+               var raw = $(v).html()
+               var index = raw.indexOf('-')
+               if (index != -1) {
+                   var artist = raw.substr(0, index)
+               } else {
+                   var artist = raw
+               }
+               artist = artist.trim()
+               if ($.inArray(artist, artists) == -1) {
+                   artists.push(artist)
+               }
+               if ($.inArray(raw, shows) == -1) {
+                   shows.push(raw)
+               }
+               console.log(artists)
+           })
+       })
+        artoo.saveJson(artists, {filename: 'artists.json'})
+        artoo.saveJson(shows, {filename: 'shows.json'})
+    })
 
 }
 
